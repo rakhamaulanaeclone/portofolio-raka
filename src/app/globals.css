@@ -1,26 +1,22 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand-dark: #0f172a;
+  --color-brand-light: #f8fafc;
+  --animate-spin-slow: spin 8s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  /* White + dots — body default, About Me & Experience inherit this */
+  .bg-dot-pattern {
+    background-color: #ffffff;
+    background-image: radial-gradient(#d0d7e3 1px, transparent 1px);
+    background-size: 28px 28px;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Solid silver — Tech Arsenal & Projects sections */
+  .bg-silver-solid {
+    background-color: #e8ecf2;
+    background-image: none;
+  }
 }
