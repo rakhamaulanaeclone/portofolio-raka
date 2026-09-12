@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import Link from 'next/link';
 
 export default function Projects() {
   const [filter, setFilter] = useState('All');
@@ -10,6 +11,7 @@ export default function Projects() {
   const projects = [
     {
       title: "SafeStreet Vision",
+      slug: "safestreet-vision",
       subtitle: "Road Damage & Helmet Detection System",
       description: "Deteksi AI/ML road damage and helmet detection using YOLOv8 untuk otomasi pengawasan keselamatan jalan raya secara real-time.",
       tags: ["Python", "YOLOv8", "Ultralytics", "FastAPI"],
@@ -17,20 +19,23 @@ export default function Projects() {
     },
     {
       title: "LokalKeren",
-      subtitle: "SaaS Directory & E-Commerce Platform for MSMEs",
-      description: "Platform direktori dan e-commerce UMKM dengan discovery cerdas dan AI untuk meningkatkan visibilitas produk lokal di pasar nasional.",
-      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      slug: "lokalkeren",
+      subtitle: "Platform Direktori & E-commerce UMKM",
+      description: "Lebih dari sekadar direktori. Ekosistem full-stack untuk menemukan, memesan, dan mengelola UMKM lokal, ditenagai oleh AI.",
+      tags: ["Next.js 14", "Prisma", "PostgreSQL", "Gemini AI"],
       category: ["Website"],
     },
     {
       title: "Peminjaman Ruangan",
-      subtitle: "Campus Space Reservation & Management Web App",
-      description: "Sistem booking ruangan kampus dengan frontend React dan backend ASP.NET Core yang mengotomasi penjadwalan serta verifikasi izin ruangan.",
-      tags: ["React", "TypeScript", "Vite", "ASP.NET Core"],
+      slug: "peminjaman-ruangan",
+      subtitle: "Sistem Peminjaman Ruangan Kampus",
+      description: "Aplikasi manajemen ruangan dengan Smart Booking System, integrasi API React & ASP.NET Core, dan mekanisme keamanan data Soft Delete.",
+      tags: ["React", "Vite", "ASP.NET Core", "PostgreSQL", "C#"],
       category: ["Website"],
     },
     {
       title: "TalentHub Mobile",
+      slug: "talenthub-mobile",
       subtitle: "Cross-Platform Mobile Application for Talent Matching",
       description: "Aplikasi mobile TalentHub untuk pengalaman pengguna yang lebih dekat, interaktif, dan mulus dalam pencarian serta pengelolaan talenta industri.",
       tags: ["Flutter", "Dart", "Mobile UI", "Interaction Design"],
@@ -91,10 +96,10 @@ export default function Projects() {
 
                 {/* Buttons */}
                 <div className="flex flex-col gap-3 mt-auto">
-                  <button className="w-full flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors">
+                  <Link href={`/project/${project.slug}`} className="w-full flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors">
                     <span>View Project</span>
                     <FiExternalLink size={14} />
-                  </button>
+                  </Link>
                   <button className="w-full flex items-center justify-center space-x-2 bg-white border border-slate-200 hover:border-slate-400 text-slate-600 py-3 rounded-xl text-sm font-semibold transition-colors">
                     <FiGithub size={14} />
                     <span>Source Code</span>

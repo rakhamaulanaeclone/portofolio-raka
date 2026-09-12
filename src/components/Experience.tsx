@@ -1,5 +1,6 @@
 import { FaCalendarAlt, FaMapMarkerAlt, FaGraduationCap } from 'react-icons/fa';
 import { MdOutlineSlowMotionVideo } from 'react-icons/md';
+import ParticleBackground from './animation/ParticleBackground';
 
 export default function Experience() {
   const experiences = [
@@ -35,9 +36,15 @@ export default function Experience() {
     }
   ];
 
-  return (
-    <section id="experience" className="py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+return (
+    // 2. TAMBAHKAN 'relative', 'overflow-hidden', dan 'bg-white' pada tag section
+    <section id="experience" className="relative py-24 px-4 overflow-hidden bg-white">
+      
+      {/* 3. PANGGIL KOMPONEN ANIMASI DI SINI */}
+      <ParticleBackground />
+
+      {/* 4. TAMBAHKAN 'relative z-10' pada div pembungkus konten agar konten ada di atas animasi */}
+      <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-3">Professional Experience</h2>
           <p className="text-slate-400 font-medium">Building impactful solutions across AI, robotics, and web development</p>

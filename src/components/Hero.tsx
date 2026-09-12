@@ -1,10 +1,12 @@
 import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaMapMarkerAlt } from 'react-icons/fa';
 import { MdDownload } from 'react-icons/md';
+import ParticleBackground from './animation/ParticleBackground';
 
 export default function Hero() {
   return (
-    <section id="about" className="min-h-screen px-4 flex items-center">
-      <div className="max-w-6xl mx-auto w-full py-20">
+    <section id="about" className="relative min-h-screen px-4 flex items-center overflow-hidden bg-white">
+      <ParticleBackground />
+      <div className="relative z-10 max-w-6xl mx-auto w-full py-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-20">
 
           {/* Left Side: Profile Card */}
