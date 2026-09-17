@@ -68,35 +68,6 @@ const projectsData: Record<string, any> = {
     demoText: "Live Demo",
     demoUrl: "https://lokalkeren.netlify.app"
   },
-  'peminjaman-ruangan': {
-    category: "WEB APP • MANAGEMENT SYSTEM",
-    title: "Peminjaman Ruangan - Campus Space Reservation",
-    appDisplayTitle: "Application Displays",
-    appDisplaySubtitle: "High-fidelity mobile client showcase & interface walkthrough",
-    appDisplayImages: [{ type: 'image', url: "/peminjaman-ruangan/app-display.png" }],
-    interfaceFocusLabel: "BOOKING FOCUS",
-    interfaceFocusTitle: "Smart Booking System",
-    interfaceFocusDesc: "Validasi ketersediaan dan bentrokan jadwal secara cerdas untuk mencegah overlapping pemesanan ruangan.",
-    performanceTitle: "Robust Architecture",
-    performanceDesc: "Integrasi API terstruktur antara frontend React + Vite dengan backend ASP.NET Core dan PostgreSQL.",
-    productEvidenceTitle: "Product Evidence",
-    productEvidenceSubtitle: "Comprehensive mobile workflows & interactive pipeline",
-    productEvidences: [{ type: 'image', url: "/peminjaman-ruangan/metrics-dashboard.png" }],
-    primaryRole: "Backend & Frontend Dev",
-    additionalScopeLabel: "OTHER SCOPE",
-    additionalScope: "API Alignment & Auth",
-    collaboration: "Tim Proyek Akademik",
-    status: "Completed",
-    contextChallenge: "Proses peminjaman ruangan kampus membutuhkan validasi jadwal yang ketat, manajemen role pengguna, approval admin, dan sistem penyimpanan riwayat data yang solid agar tidak mudah hilang.",
-    processApproach: "Membangun API menggunakan ASP.NET Core 10.0 dan Entity Framework Core, berpasangan dengan React + Vite di frontend. Saya menyelaraskan UserRole dan BookingStatus, menghubungkan autentikasi, serta mendukung API dengan validasi DTO, Swagger, CORS, dan endpoint approval status.",
-    resultImpact: "Terciptanya Smart Booking System yang mencegah tabrakan jadwal dengan validasi waktu real-time. Keamanan dan integritas data (Data Safety) dipastikan dengan implementasi fitur Soft Delete pada PostgreSQL untuk menjaga rekam jejak audit peminjaman ruangan.",
-    keyHighlights: [
-      { title: "Smart Booking System", desc: "Validasi otomatis waktu mulai dan selesai, serta pencegahan tabrakan peminjaman di slot waktu yang sama (Availability Check)." },
-      { title: "Data Safety (Soft Delete)", desc: "Mekanisme API DELETE yang hanya mengatur flag is_deleted = true tanpa menghapus baris di database, sehingga riwayat audit tetap utuh." },
-      { title: "Robust Tech Stack", desc: "Arsitektur frontend React + Vite yang terhubung secara mulus ke API ASP.NET Core dan PostgreSQL via Entity Framework." }
-    ],
-    technologies: ['React', 'Vite', 'ASP.NET Core', 'C#', 'Entity Framework', 'PostgreSQL', 'Swagger']
-  },
   'talenthub-mobile': {
     category: "MOBILE APP • ATS",
     title: "TalentHub - Mobile ATS Ecosystem",

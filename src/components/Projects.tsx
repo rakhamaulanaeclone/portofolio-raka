@@ -31,16 +31,6 @@ export default function Projects() {
       category: ["Website"],
     },
     {
-      title: "RoomBook",
-      slug: "peminjaman-ruangan",
-      subtitle: "Sistem Peminjaman Ruangan",
-      typeLabel: "MANAGEMENT SYSTEM",
-      role: "Backend Developer",
-      description: "Aplikasi manajemen ruangan dengan Smart Booking System, integrasi API React & ASP.NET Core, dan mekanisme keamanan data Soft Delete.",
-      tags: ["React", "ASP.NET Core", "PostgreSQL"],
-      category: ["Website"],
-    },
-    {
       title: "TalentHub",
       slug: "talenthub-mobile",
       subtitle: "Mobile Applicant Tracking System",

@@ -71,24 +71,24 @@ export default function Experience() {
       <ParticleBackground />
 
       <div className="relative z-10 w-full max-w-[2000px] px-4 md:px-12 mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-3">Professional Experience</h2>
-          <p className="text-slate-400 font-medium">Building impactful solutions across AI, robotics, and web development</p>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2 sm:mb-3">Professional Experience</h2>
+          <p className="text-slate-400 text-xs sm:text-sm md:text-base font-medium">Building impactful solutions across AI, robotics, and web development</p>
         </div>
 
-        <div ref={containerRef} className="relative w-full mx-auto py-10">
+        <div ref={containerRef} className="relative w-full mx-auto py-6 sm:py-10">
 
-          {/* Garis Tengah Background */}
-          <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-1 h-full bg-slate-100 rounded-full top-0 z-0"></div>
+          {/* Garis Tengah Background - Hanya ditampilkan di md+ karena di mobile cards full width */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-slate-100 rounded-full top-0 z-0"></div>
 
           {/* Garis Silver Scroll */}
           <div
-            className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-1 bg-slate-400 rounded-full transition-all duration-150 ease-out top-0 z-10"
+            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-slate-400 rounded-full transition-all duration-150 ease-out top-0 z-10"
             style={{ height: `${lineHeight}%` }}
           ></div>
 
           {/* LIST PENGALAMAN */}
-          <div className="flex flex-col space-y-12">
+          <div className="flex flex-col space-y-8 sm:space-y-12">
             {experiences.map((exp, idx) => {
               const isLeftCard = idx % 2 === 0;
 
@@ -97,8 +97,8 @@ export default function Experience() {
 
                   {/* 
                     CARD WRAPPER 
-                    Menggunakan lebar calc(50% - 3rem) memastikan ujung card tidak akan menyentuh garis tengah.
-                    mr-auto mendorong card ke ujung kiri layar, ml-auto mendorong card ke ujung kanan layar.
+                    Menggunakan lebar calc(50% - 3rem) di desktop memastikan ujung card tidak menyentuh garis tengah.
+                    Di mobile, lebar 100% penuh dengan padding nyaman.
                   */}
                   <ScrollReveal
                     className={`w-full md:w-[calc(50%-3rem)] ${isLeftCard ? 'md:mr-auto' : 'md:ml-auto'}`}
@@ -109,9 +109,9 @@ export default function Experience() {
                     duration={600}
                   >
 
-                    {/* LINGKARAN LOGO - Di atas card (Pojok kanan untuk card kiri, pojok kiri untuk card kanan) */}
-                    <div className={`flex ${isLeftCard ? 'justify-end' : 'justify-start'} mb-4`}>
-                      <div className={`w-18 h-18 rounded-full border-2 ${exp.iconBg} flex items-center justify-center shadow-sm bg-white relative z-20 overflow-hidden`}>
+                    {/* LINGKARAN LOGO - Di mobile rata kiri, di desktop mengikuti posisi card */}
+                    <div className={`flex justify-start ${isLeftCard ? 'md:justify-end' : 'md:justify-start'} mb-3 sm:mb-4`}>
+                      <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 ${exp.iconBg} flex items-center justify-center shadow-sm bg-white relative z-20 overflow-hidden`}>
                         {exp.logoUrl ? (
                           <img src={exp.logoUrl} alt={exp.title} className="w-full h-full object-cover" />
                         ) : null}
@@ -119,11 +119,11 @@ export default function Experience() {
                     </div>
 
                     {/* ISI CARD */}
-                    <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200/70 hover:shadow-md transition-shadow relative z-30">
-                      <h3 className="text-xl font-bold text-slate-900 mb-1">{exp.title}</h3>
-                      <p className="text-sm font-semibold text-slate-500 mb-5">{exp.company}</p>
+                    <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-slate-200/70 hover:shadow-md transition-shadow relative z-30">
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1">{exp.title}</h3>
+                      <p className="text-xs sm:text-sm font-semibold text-slate-500 mb-4 sm:mb-5">{exp.company}</p>
 
-                      <div className="flex flex-wrap gap-x-8 gap-y-2 mb-5 text-xs text-slate-500">
+                      <div className="flex flex-wrap gap-x-4 sm:gap-x-8 gap-y-2 mb-4 sm:mb-5 text-xs text-slate-500">
                         <div className="flex items-center space-x-1.5">
                           <FaCalendarAlt className="text-slate-400" size={11} />
                           <span>{exp.dateRange}</span>
@@ -140,20 +140,20 @@ export default function Experience() {
                         )}
                       </div>
 
-                      <p className="text-slate-600 text-sm leading-relaxed mb-5">{exp.summary}</p>
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">{exp.summary}</p>
 
-                      <ul className="space-y-3 mb-8">
+                      <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
                         {exp.points.map((point, pIdx) => (
                           <li key={pIdx} className="flex items-start space-x-2.5">
                             <span className="text-slate-700 mt-0.5 flex-shrink-0 text-xs">▶</span>
-                            <span className="text-slate-600 text-sm leading-relaxed">{point}</span>
+                            <span className="text-slate-600 text-xs sm:text-sm leading-relaxed">{point}</span>
                           </li>
                         ))}
                       </ul>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
                         {exp.tags.map((tag, tIdx) => (
-                          <span key={tIdx} className="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-xs font-medium rounded-md">
+                          <span key={tIdx} className="px-2.5 sm:px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] sm:text-xs font-medium rounded-md">
                             {tag}
                           </span>
                         ))}

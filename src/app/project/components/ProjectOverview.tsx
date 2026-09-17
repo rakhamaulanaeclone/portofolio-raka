@@ -4,7 +4,7 @@ export default function ProjectOverview({ project }: { project: any }) {
   return (
     <section className="border-t border-slate-200 pt-8">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl font-extrabold text-slate-900">Project Overview</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Project Overview</h2>
         <span className="px-3 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold tracking-wider uppercase rounded-full">Case Study</span>
       </div>
 

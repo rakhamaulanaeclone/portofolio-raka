@@ -68,17 +68,17 @@ export default function MediaCarousel({ media }: { media: MediaItem[] }) {
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity focus:outline-none z-20"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white text-slate-800 p-1.5 sm:p-2 rounded-full shadow-md opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus:outline-none z-20"
             aria-label="Previous Slide"
           >
-            <FiChevronLeft size={24} />
+            <FiChevronLeft size={20} className="sm:w-6 sm:h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity focus:outline-none z-20"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white text-slate-800 p-1.5 sm:p-2 rounded-full shadow-md opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus:outline-none z-20"
             aria-label="Next Slide"
           >
-            <FiChevronRight size={24} />
+            <FiChevronRight size={20} className="sm:w-6 sm:h-6" />
           </button>
           
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">

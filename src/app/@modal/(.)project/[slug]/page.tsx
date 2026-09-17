@@ -5,7 +5,7 @@ export default async function InterceptedProjectPage({ params }: { params: Promi
   const { slug } = await params;
   return (
     <Modal>
-      <DetailProject slug={slug} />
+      <DetailProject slug={slug} isModal={true} />
     </Modal>
   );
 }

@@ -34,26 +34,37 @@ export default function Footer() {
     <footer id="contact" className="bg-white border-t border-slate-200/60 py-10 px-4">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
 
-        <div className="text-center md:text-left">
-          <h3 className="text-base font-semibold text-slate-700 mb-1">Sayyidhina Raka Maulana</h3>
-          <p className="text-xs text-slate-400">
-            © {currentYear} Sayyidhina Raka Maulana • Software Engineer, Mobile Develioper & Machine Learning Engineer. All rights reserved.
+        {/* Deskripsi Teks - Tanpa max-width ketat supaya muat 2 baris pas */}
+        <div className="text-center md:text-left flex-1">
+          <h3 className="text-base font-semibold text-slate-700 mb-1">Let's Collaborate!</h3>
+          <p className="text-xs text-slate-400 whitespace-nowrap">
+            I'm currently open to new opportunities in software development and innovative tech solutions. Whether you're looking for a full-stack developer,
+          </p>
+          <p className="text-xs text-slate-400 whitespace-nowrap">
+            Mobile Developer & Machine Learning Developer. I'd love to hear from you.
           </p>
         </div>
 
-        <div className="flex space-x-3">
-          {socialLinks.map((item, idx) => (
-            <a
-              key={idx}
-              href={item.href}
-              aria-label={item.label}
-              {...(item.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all"
-            >
-              {item.icon}
-            </a>
-          ))}
+        {/* Teks CONTACT & Ikon Sosial Media */}
+        <div className="flex flex-col items-center justify-center gap-2">
+          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider text-center">
+            Contact Me
+          </span>
+          <div className="flex space-x-3">
+            {socialLinks.map((item, idx) => (
+              <a
+                key={idx}
+                href={item.href}
+                aria-label={item.label}
+                {...(item.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all"
+              >
+                {item.icon}
+              </a>
+            ))}
+          </div>
         </div>
+
       </div>
     </footer>
   );

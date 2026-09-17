@@ -13,26 +13,30 @@ export default function Hero() {
           {/* Left Side: Profile Card */}
           <div className="w-full lg:w-5/12 flex flex-col items-center text-center">
             {/* Floating profile circle with dashed ring */}
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 xl:w-[380px] xl:h-[380px] mb-8 lg:mb-10 shrink-0">
+            <div className="relative w-60 h-60 sm:w-80 sm:h-80 lg:w-96 lg:h-96 xl:w-[380px] xl:h-[380px] mb-6 sm:mb-8 lg:mb-10 shrink-0">
               {/* Outer dashed circle ring */}
               <div className="absolute inset-0 border-2 border-dashed border-blue-300/40 rounded-full animate-[spin_12s_linear_infinite]"></div>
               {/* Inner white circle as profile image area */}
-              <div className="absolute inset-4 bg-white rounded-full shadow-2xl flex items-center justify-center overflow-hidden border-4 border-white">
+              <div className="absolute inset-3 sm:inset-4 bg-white rounded-full shadow-2xl flex items-center justify-center overflow-hidden border-4 border-white">
                 {/* Placeholder for profile photo */}
                 <Image src="/image/raka.jpeg" alt="Raka Maulana" fill className="object-cover object-top" priority />
               </div>
             </div>
 
             {/* Name */}
-            <h1 className="text-xl sm:text-2xl xl:text-3xl 2xl:text-4xl font-extrabold text-slate-900 mb-3">Sayyidhina Raka Maulana</h1>
+            <h1 className="text-xl sm:text-2xl xl:text-3xl 2xl:text-4xl font-extrabold text-slate-900 mb-2 sm:mb-3">Sayyidhina Raka Maulana</h1>
 
             {/* Roles */}
-            <p className="text-xs sm:text-sm xl:text-base font-semibold text-slate-400 mb-6 lg:mb-8 tracking-wide">
-              AI Engineer <span className="text-slate-300 mx-1.5">|</span> Software Developer <span className="text-slate-300 mx-1.5">|</span> Mobile Developer
-            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-1 text-xs sm:text-sm xl:text-base font-semibold text-slate-400 mb-6 lg:mb-8 tracking-wide max-w-md">
+              <span>ML Engineer</span>
+              <span className="text-slate-300">|</span>
+              <span>Software Developer</span>
+              <span className="text-slate-300">|</span>
+              <span>Mobile Developer</span>
+            </div>
 
             {/* Social Icons */}
-            <div className="flex space-x-3 mb-6">
+            <div className="flex space-x-2.5 sm:space-x-3 mb-6">
               {[
                 {
                   label: 'GitHub Profile',
@@ -64,7 +68,7 @@ export default function Hero() {
                   href={item.href}
                   aria-label={item.label}
                   {...(item.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="w-11 h-11 xl:w-12 xl:h-12 rounded-full bg-white shadow-sm border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 hover:shadow-md transition-all duration-200"
+                  className="w-10 h-10 sm:w-11 sm:h-11 xl:w-12 xl:h-12 rounded-full bg-white shadow-sm border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 hover:shadow-md transition-all duration-200"
                 >
                   {item.icon}
                 </a>
@@ -72,16 +76,16 @@ export default function Hero() {
             </div>
 
             {/* Location */}
-            <div className="flex items-center space-x-2 text-slate-400 text-sm xl:text-base">
+            <div className="flex items-center space-x-2 text-slate-400 text-xs sm:text-sm xl:text-base">
               <FaMapMarkerAlt size={14} />
               <span>Surabaya, Indonesia</span>
             </div>
           </div>
 
           {/* Right Side: About Me Text */}
-          <div className="w-full lg:w-7/12">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold text-slate-900 tracking-tight mb-6 lg:mb-10 uppercase">About Me</h2>
-            <p className="text-slate-600 leading-relaxed mb-8 lg:mb-10 text-base sm:text-lg xl:text-xl 2xl:text-2xl">
+          <div className="w-full lg:w-7/12 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold text-slate-900 tracking-tight mb-4 sm:mb-6 lg:mb-10 uppercase">About Me</h2>
+            <p className="text-slate-600 leading-relaxed mb-6 sm:mb-8 lg:mb-10 text-sm sm:text-lg xl:text-xl 2xl:text-2xl">
               A dedicated <strong className="text-slate-900">software engineer</strong> from{' '}
               <strong className="text-slate-900">Politeknik Elektronika Negeri Surabaya (PENS)</strong> with{' '}
               <strong className="text-slate-900">3+ years of experience</strong> specializing in{' '}
@@ -94,7 +98,7 @@ export default function Hero() {
               <strong className="text-slate-900">Node.js</strong>.
             </p>
 
-            <button className="flex items-center space-x-2 bg-slate-900 hover:bg-slate-700 text-white px-8 py-4 xl:px-10 xl:py-5 rounded-xl text-sm xl:text-base font-semibold transition-colors shadow-md hover:shadow-lg">
+            <button className="flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-700 text-white px-7 py-3.5 sm:px-8 sm:py-4 xl:px-10 xl:py-5 rounded-xl text-sm xl:text-base font-semibold transition-colors shadow-md hover:shadow-lg w-full sm:w-auto">
               <MdDownload size={22} />
               <span>Download CV</span>
             </button>

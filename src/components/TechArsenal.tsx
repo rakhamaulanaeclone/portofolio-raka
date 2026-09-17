@@ -73,24 +73,24 @@ export default function TechArsenal() {
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 bg-[#f4f7fa]">
+    <section id="skills" className="py-20 px-4 bg-[#f8fafc]">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-black text-[#0f172a] tracking-tight uppercase mb-4">Tech Arsenal</h2>
-          <p className="text-slate-500 tracking-widest text-sm font-mono lowercase">tools & technologies i wield</p>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0f172a] tracking-tight uppercase mb-3 sm:mb-4">Tech Arsenal</h2>
+          <p className="text-slate-500 tracking-widest text-xs sm:text-sm font-mono lowercase">tools &amp; technologies i wield</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {categories.map((category, idx) => (
-            <ScrollReveal key={idx} delay={idx * 70} direction="up" scale={0.95} duration={520} className="bg-[#e2e8f0] rounded-2xl p-8 shadow-sm">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">{category.title}</h3>
-              <p className="text-sm text-slate-500 mb-8 leading-relaxed pr-4">{category.description}</p>
+            <ScrollReveal key={idx} delay={idx * 70} direction="up" scale={0.95} duration={520} className="bg-[#eef2f6] rounded-2xl p-5 sm:p-8 shadow-sm">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-3">{category.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-500 mb-6 sm:mb-8 leading-relaxed pr-0 sm:pr-4">{category.description}</p>
 
-              <div className="border-t border-slate-300 pt-6">
-                <h4 className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase mb-6">
+              <div className="border-t border-slate-300/70 pt-5 sm:pt-6">
+                <h4 className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase mb-5 sm:mb-6">
                   Technologies
                 </h4>
-                <div className={`grid gap-y-5 gap-x-4 ${category.cols}`}>
+                <div className={`grid gap-y-4 sm:gap-y-5 gap-x-3 sm:gap-x-4 ${category.cols}`}>
                   {category.skills.map((skill, sIdx) => (
                     <ScrollReveal
                       key={sIdx}
@@ -100,11 +100,11 @@ export default function TechArsenal() {
                       scale={0.98}
                       duration={220}
                     >
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
                         <div className="flex-shrink-0 w-6 h-6 bg-slate-50 border border-slate-100 rounded flex items-center justify-center shadow-sm">
                           {skill.icon}
                         </div>
-                        <span className="text-sm text-slate-700 font-medium">{skill.name}</span>
+                        <span className="text-xs sm:text-sm text-slate-700 font-medium truncate">{skill.name}</span>
                       </div>
                     </ScrollReveal>
                   ))}

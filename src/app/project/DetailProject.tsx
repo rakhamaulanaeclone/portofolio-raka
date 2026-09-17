@@ -1,13 +1,15 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { FiGithub, FiArrowLeft, FiExternalLink } from 'react-icons/fi';
 import { FaGooglePlay } from 'react-icons/fa6';
 import projectsData from './projectsData';
 import ProjectOverview from './components/ProjectOverview';
 import MediaCarousel from '../../components/MediaCarousel';
 
-export default function DetailProject({ slug }: { slug: string }) {
+import { useRouter } from 'next/navigation';
+
+export default function DetailProject({ slug, isModal = false }: { slug: string, isModal?: boolean }) {
+  const router = useRouter();
   const project = projectsData[slug];
   const interfaceFocusLabel = project?.interfaceFocusLabel ?? "INTERFACE FOCUS";
   const additionalScopeLabel = project?.additionalScopeLabel ?? "ADDITIONAL SCOPE";
@@ -27,57 +29,63 @@ export default function DetailProject({ slug }: { slug: string }) {
   }
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 py-12 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen bg-white text-slate-900 py-8 sm:py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="w-full xl:px-12 mx-auto">
 
         {/* Back Link */}
-        <div className="mb-8">
-          <Link href="/#projects" className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors">
-            <FiArrowLeft className="mr-2" /> Back to Projects
-          </Link>
+        <div className="mb-6 sm:mb-8">
+          {isModal ? (
+            <button onClick={() => router.back()} className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors">
+              <FiArrowLeft className="mr-2" /> Back to Projects
+            </button>
+          ) : (
+            <Link href="/#projects" className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors">
+              <FiArrowLeft className="mr-2" /> Back to Projects
+            </Link>
+          )}
         </div>
 
         {/* Header */}
-        <div className="mb-12">
-          <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3">
+        <div className="mb-8 sm:mb-12">
+          <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-2 sm:mb-3">
             {project.category}
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-4 sm:mb-6 leading-tight">
             {project.title}
           </h1>
         </div>
 
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
 
           {/* Left Column - Visuals */}
-          <div className="lg:col-span-7 flex flex-col gap-12">
+          <div className="lg:col-span-7 flex flex-col gap-8 sm:gap-12">
 
             {project.appDisplayImages && project.appDisplayImages.length > 0 && (
               <section>
-                <h2 className="text-2xl font-extrabold text-slate-900 mb-2">{project.appDisplayTitle || "Application Displays"}</h2>
-                <p className="text-sm text-slate-500 font-medium mb-6">{project.appDisplaySubtitle || "High-fidelity mobile client showcase & interface walkthrough"}</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">{project.appDisplayTitle || "Application Displays"}</h2>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium mb-4 sm:mb-6">{project.appDisplaySubtitle || "High-fidelity mobile client showcase & interface walkthrough"}</p>
                 <MediaCarousel media={project.appDisplayImages} />
               </section>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-7 rounded-2xl border border-slate-200/60 shadow-sm">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">{interfaceFocusLabel || "INTERFACE FOCUS"}</p>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{project.interfaceFocusTitle}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{project.interfaceFocusDesc}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="p-5 sm:p-7 rounded-2xl border border-slate-200/60 shadow-sm">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 sm:mb-3">{interfaceFocusLabel || "INTERFACE FOCUS"}</p>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 sm:mb-2">{project.interfaceFocusTitle}</h3>
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">{project.interfaceFocusDesc}</p>
               </div>
-              <div className="p-7 rounded-2xl border border-slate-200/60 shadow-sm">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">{project.performanceLabel || "PERFORMANCE"}</p>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{project.performanceTitle}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{project.performanceDesc}</p>
+              <div className="p-5 sm:p-7 rounded-2xl border border-slate-200/60 shadow-sm">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 sm:mb-3">{project.performanceLabel || "PERFORMANCE"}</p>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 sm:mb-2">{project.performanceTitle}</h3>
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">{project.performanceDesc}</p>
               </div>
             </div>
 
             {project.productEvidences && project.productEvidences.length > 0 && (
               <section>
-                <h2 className="text-2xl font-extrabold text-slate-900 mb-2">{project.productEvidenceTitle || "Product Evidence"}</h2>
-                <p className="text-sm text-slate-500 font-medium mb-6">{project.productEvidenceSubtitle || "Comprehensive mobile workflows & interactive pipeline"}</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">{project.productEvidenceTitle || "Product Evidence"}</h2>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium mb-4 sm:mb-6">{project.productEvidenceSubtitle || "Comprehensive mobile workflows & interactive pipeline"}</p>
                 <MediaCarousel media={project.productEvidences} />
               </section>
             )}
@@ -85,10 +93,10 @@ export default function DetailProject({ slug }: { slug: string }) {
             {/* Optional Extended Sections (e.g. TalentHub) */}
             {project.contributions && (
               <section className="border-t border-slate-200 pt-8">
-                <h2 className="text-2xl font-extrabold text-slate-900 mb-6">My Contribution</h2>
-                <ul className="list-disc list-outside pl-6 space-y-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">My Contribution</h2>
+                <ul className="list-disc list-outside pl-5 sm:pl-6 space-y-4 sm:space-y-6">
                   {project.contributions.map((item: any, idx: number) => (
-                    <li key={idx} className="text-sm text-slate-500 leading-relaxed">
+                    <li key={idx} className="text-xs sm:text-sm text-slate-500 leading-relaxed">
                       <span className="font-bold text-slate-900">{item.title}</span>{' '}{item.desc}
                     </li>
                   ))}
@@ -98,11 +106,11 @@ export default function DetailProject({ slug }: { slug: string }) {
 
             {project.systemDeployment && (
               <section className="border-t border-slate-200 pt-8">
-                <h2 className="text-2xl font-extrabold text-slate-900 mb-6">System & Delivery</h2>
-                <p className="text-sm text-slate-500 leading-relaxed mb-6">{project.systemDeployment.desc}</p>
-                <ul className="list-disc list-outside pl-6 space-y-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">System & Delivery</h2>
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-4 sm:mb-6">{project.systemDeployment.desc}</p>
+                <ul className="list-disc list-outside pl-5 sm:pl-6 space-y-3 sm:space-y-4">
                   {project.systemDeployment.points.map((item: any, idx: number) => (
-                    <li key={idx} className="text-sm text-slate-500 leading-relaxed">
+                    <li key={idx} className="text-xs sm:text-sm text-slate-500 leading-relaxed">
                       <span className="font-bold text-slate-900">{item.title}</span>{' '}{item.desc}
                     </li>
                   ))}
@@ -112,10 +120,10 @@ export default function DetailProject({ slug }: { slug: string }) {
 
             {project.achievedResults && (
               <section className="border-t border-slate-200 pt-8">
-                <h2 className="text-2xl font-extrabold text-slate-900 mb-6">Delivered Outcomes</h2>
-                <ul className="list-disc list-outside pl-6 space-y-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Delivered Outcomes</h2>
+                <ul className="list-disc list-outside pl-5 sm:pl-6 space-y-4 sm:space-y-6">
                   {project.achievedResults.map((item: any, idx: number) => (
-                    <li key={idx} className="text-sm text-slate-500 leading-relaxed">
+                    <li key={idx} className="text-xs sm:text-sm text-slate-500 leading-relaxed">
                       <span className="font-bold text-slate-900">{item.title}</span>{' '}{item.desc}
                     </li>
                   ))}
@@ -126,28 +134,28 @@ export default function DetailProject({ slug }: { slug: string }) {
           </div>
 
           {/* Right Column - Details */}
-          <div className="lg:col-span-5 flex flex-col gap-10">
+          <div className="lg:col-span-5 flex flex-col gap-8 sm:gap-10">
 
             {/* Info Table */}
-            <div className="border-t border-slate-200 pt-8">
+            <div className="border-t border-slate-200 pt-6 sm:pt-8">
               <dl className="divide-y divide-slate-100">
-                <div className="py-4 flex justify-between">
-                  <dt className="text-xs font-bold tracking-wider text-slate-400 uppercase">PRIMARY ROLE</dt>
-                  <dd className="text-sm font-semibold text-slate-900 text-right">{project.primaryRole}</dd>
+                <div className="py-3 sm:py-4 flex justify-between items-center gap-4">
+                  <dt className="text-xs font-bold tracking-wider text-slate-400 uppercase shrink-0">PRIMARY ROLE</dt>
+                  <dd className="text-xs sm:text-sm font-semibold text-slate-900 text-right">{project.primaryRole}</dd>
                 </div>
                 {showAdditionalScope && (
-                  <div className="py-4 flex justify-between">
-                    <dt className="text-xs font-bold tracking-wider text-slate-400 uppercase">{additionalScopeLabel}</dt>
-                    <dd className="text-sm font-semibold text-slate-900 text-right">{project.additionalScope}</dd>
+                  <div className="py-3 sm:py-4 flex justify-between items-center gap-4">
+                    <dt className="text-xs font-bold tracking-wider text-slate-400 uppercase shrink-0">{additionalScopeLabel}</dt>
+                    <dd className="text-xs sm:text-sm font-semibold text-slate-900 text-right">{project.additionalScope}</dd>
                   </div>
                 )}
-                <div className="py-4 flex justify-between">
-                  <dt className="text-xs font-bold tracking-wider text-slate-400 uppercase">COLLABORATION</dt>
-                  <dd className="text-sm font-semibold text-slate-900 text-right">{project.collaboration}</dd>
+                <div className="py-3 sm:py-4 flex justify-between items-center gap-4">
+                  <dt className="text-xs font-bold tracking-wider text-slate-400 uppercase shrink-0">COLLABORATION</dt>
+                  <dd className="text-xs sm:text-sm font-semibold text-slate-900 text-right">{project.collaboration}</dd>
                 </div>
-                <div className="py-4 flex justify-between">
-                  <dt className="text-xs font-bold tracking-wider text-slate-400 uppercase">STATUS</dt>
-                  <dd className="text-sm font-semibold text-slate-900 text-right">{project.status}</dd>
+                <div className="py-3 sm:py-4 flex justify-between items-center gap-4">
+                  <dt className="text-xs font-bold tracking-wider text-slate-400 uppercase shrink-0">STATUS</dt>
+                  <dd className="text-xs sm:text-sm font-semibold text-slate-900 text-right">{project.status}</dd>
                 </div>
               </dl>
             </div>
