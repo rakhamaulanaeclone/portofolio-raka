@@ -1,83 +1,116 @@
+"use client";
+
 import {
-  SiDotnet, SiPostgresql, SiPrisma, SiMysql, SiSwagger,
-  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFlutter,
-  SiPytorch
+  SiNodedotjs, SiPhp, SiPython, SiC, SiCplusplus, SiDotnet,
+  SiLaravel, SiFastapi, SiPostgresql, SiPrisma, SiSupabase,
+  SiHtml5, SiCss, SiTypescript, SiReact, SiNextdotjs,
+  SiTailwindcss, SiDart, SiFlutter, SiPytorch, SiOpencv,
+  SiPandas, SiOnnx, SiDocker, SiGit
 } from 'react-icons/si';
-import { TbApi, TbBrain, TbEye, TbBolt, TbDeviceMobile, TbLock, TbDatabase } from 'react-icons/tb';
+import { FaJava } from 'react-icons/fa';
+import { TbApi, TbSettings } from 'react-icons/tb';
+import ScrollReveal from './ScrollReveal';
 
 export default function TechArsenal() {
   const categories = [
     {
       title: "Backend",
-      badge: "CORE API",
-      description: "Fondasi API, autentikasi, dokumentasi, dan database.",
+      description: "Server architecture, robust APIs, data persistence, and efficient database management.",
+      cols: "grid-cols-2 lg:grid-cols-3",
       skills: [
-        { name: "ASP.NET Core", icon: <SiDotnet className="text-purple-600" size={16} /> },
-        { name: "REST API", icon: <TbApi className="text-orange-500" size={16} /> },
-        { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600" size={16} /> },
-        { name: "JWT Auth", icon: <TbLock className="text-amber-500" size={16} /> },
-        { name: "Prisma ORM", icon: <SiPrisma className="text-teal-600" size={16} /> },
-        { name: "Swagger", icon: <SiSwagger className="text-green-500" size={16} /> },
+        { name: "Node.js", icon: <SiNodedotjs className="text-green-600" size={14} /> },
+        { name: "PHP", icon: <SiPhp className="text-indigo-500" size={14} /> },
+        { name: "Java", icon: <FaJava className="text-orange-600" size={14} /> },
+        { name: "Python", icon: <SiPython className="text-blue-500" size={14} /> },
+        { name: "C", icon: <SiC className="text-blue-600" size={14} /> },
+        { name: "C++", icon: <SiCplusplus className="text-blue-700" size={14} /> },
+        { name: "ASP.NET Core", icon: <SiDotnet className="text-purple-600" size={14} /> },
+        { name: "Laravel", icon: <SiLaravel className="text-red-500" size={14} /> },
+        { name: "FastAPI", icon: <SiFastapi className="text-teal-500" size={14} /> },
+        { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-500" size={14} /> },
+        { name: "Prisma ORM", icon: <SiPrisma className="text-teal-600" size={14} /> },
+        { name: "Supabase", icon: <SiSupabase className="text-emerald-500" size={14} /> },
+        { name: "REST API", icon: <TbApi className="text-orange-500" size={14} /> },
       ]
     },
     {
       title: "Frontend & Mobile",
-      badge: "CLIENT UI",
-      description: "Membangun pengalaman web dan mobile yang cepat dan responsif.",
+      description: "Responsive web interfaces, high-performance mobile apps, and interactive user experiences.",
+      cols: "grid-cols-2",
       skills: [
-        { name: "React", icon: <SiReact className="text-cyan-400" size={16} /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-500" size={16} /> },
-        { name: "Next.js", icon: <SiNextdotjs className="text-slate-900" size={16} /> },
-        { name: "Flutter", icon: <SiFlutter className="text-blue-500" size={16} /> },
-        { name: "TypeScript", icon: <SiTypescript className="text-blue-600" size={16} /> },
-        { name: "Responsive", icon: <TbDeviceMobile className="text-slate-500" size={16} /> },
+        { name: "HTML", icon: <SiHtml5 className="text-orange-500" size={14} /> },
+        { name: "CSS", icon: <SiCss className="text-blue-500" size={14} /> },
+        { name: "TypeScript", icon: <SiTypescript className="text-blue-600" size={14} /> },
+        { name: "React", icon: <SiReact className="text-cyan-400" size={14} /> },
+        { name: "Next.js", icon: <SiNextdotjs className="text-black" size={14} /> },
+        { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-500" size={14} /> },
+        { name: "Dart", icon: <SiDart className="text-cyan-600" size={14} /> },
+        { name: "Flutter", icon: <SiFlutter className="text-blue-400" size={14} /> },
       ]
     },
     {
-      title: "Artificial Intelligence",
-      badge: "ML & VISION",
-      description: "Pengembangan solusi computer vision dan machine learning.",
+      title: "Machine Learning & Computer Vision",
+      description: "Machine learning modeling, custom computer vision solutions, and end-to-end inference pipelines.",
+      cols: "grid-cols-2",
       skills: [
-        { name: "YOLOv8", icon: <span className="text-pink-500 font-bold text-xs">YO</span> },
-        { name: "Model Training", icon: <TbDatabase className="text-indigo-500" size={16} /> },
-        { name: "Computer Vision", icon: <TbEye className="text-purple-500" size={16} /> },
-        { name: "Inference", icon: <TbBolt className="text-yellow-500" size={16} /> },
-        { name: "Dataset Processing", icon: <TbBrain className="text-pink-400" size={16} /> },
+        { name: "PyTorch", icon: <SiPytorch className="text-orange-600" size={14} /> },
+        { name: "OpenCV", icon: <SiOpencv className="text-green-500" size={14} /> },
+        { name: "Pandas", icon: <SiPandas className="text-indigo-800" size={14} /> },
+        { name: "YOLO", icon: <span className="text-red-500 font-bold text-[10px]">YO</span> },
+        { name: "ONNX", icon: <SiOnnx className="text-blue-600" size={14} /> },
+      ]
+    },
+    {
+      title: "Infrastructure & DevOps",
+      description: "Containerization, automated MLOps pipelines, and collaborative version control.",
+      cols: "grid-cols-2",
+      skills: [
+        { name: "Docker", icon: <SiDocker className="text-blue-500" size={14} /> },
+        { name: "MLOps", icon: <TbSettings className="text-teal-600" size={14} /> },
+        { name: "Git", icon: <SiGit className="text-orange-500" size={14} /> },
       ]
     }
   ];
 
   return (
-    <section id="skills" className="pt-24 pb-64 px-4 bg-silver-solid">
+    <section id="skills" className="py-20 px-4 bg-[#f4f7fa]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold text-slate-900 tracking-tight uppercase mb-3">Tech Arsenal</h2>
-          <p className="text-slate-400 tracking-[0.2em] text-sm uppercase font-medium">tools & technologies i wield</p>
+          <h2 className="text-5xl font-black text-[#0f172a] tracking-tight uppercase mb-4">Tech Arsenal</h2>
+          <p className="text-slate-500 tracking-widest text-sm font-mono lowercase">tools & technologies i wield</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {categories.map((category, idx) => (
-            <div key={idx} className="bg-white rounded-2xl p-7 shadow-sm border border-slate-200/70 hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="text-lg font-bold text-slate-900">{category.title}</h3>
-                <span className="text-[10px] font-bold px-2.5 py-1 bg-slate-100 text-slate-500 rounded-md uppercase tracking-wider whitespace-nowrap">
-                  {category.badge}
-                </span>
-              </div>
-              <p className="text-sm text-slate-400 mb-7 leading-relaxed">{category.description}</p>
+            <ScrollReveal key={idx} delay={idx * 70} direction="up" scale={0.95} duration={520} className="bg-[#e2e8f0] rounded-2xl p-8 shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">{category.title}</h3>
+              <p className="text-sm text-slate-500 mb-8 leading-relaxed pr-4">{category.description}</p>
 
-              <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                {category.skills.map((skill, sIdx) => (
-                  <div key={sIdx} className="flex items-center space-x-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 flex-shrink-0"></span>
-                    <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                      {skill.icon}
-                    </div>
-                    <span className="text-sm text-slate-700 font-medium">{skill.name}</span>
-                  </div>
-                ))}
+              <div className="border-t border-slate-300 pt-6">
+                <h4 className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase mb-6">
+                  Technologies
+                </h4>
+                <div className={`grid gap-y-5 gap-x-4 ${category.cols}`}>
+                  {category.skills.map((skill, sIdx) => (
+                    <ScrollReveal
+                      key={sIdx}
+                      delay={idx * 70 + 100 + sIdx * 22}
+                      direction="up"
+                      distance={14}
+                      scale={0.98}
+                      duration={220}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="flex-shrink-0 w-6 h-6 bg-slate-50 border border-slate-100 rounded flex items-center justify-center shadow-sm">
+                          {skill.icon}
+                        </div>
+                        <span className="text-sm text-slate-700 font-medium">{skill.name}</span>
+                      </div>
+                    </ScrollReveal>
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

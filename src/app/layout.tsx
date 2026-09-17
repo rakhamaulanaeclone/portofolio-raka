@@ -13,13 +13,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <body className={`${inter.className} min-h-screen bg-dot-pattern text-slate-800 antialiased`}>
         {children}
+        {modal}
       </body>
     </html>
   );

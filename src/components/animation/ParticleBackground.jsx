@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
 
-export default function ParticleBackground() {
+export default function ParticleBackground({ withMask = false }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -116,7 +116,11 @@ export default function ParticleBackground() {
     <canvas 
       ref={canvasRef} 
       // Tambahkan w-full h-full untuk mencegah distorsi
-      className="absolute inset-0 z-0 w-full h-full pointer-events-none" 
+      className="absolute inset-0 z-0 w-full h-full pointer-events-none"
+      style={withMask ? {
+        WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 15%, black 70%)',
+        maskImage: 'radial-gradient(ellipse at center, transparent 15%, black 70%)'
+      } : undefined}
     />
   );
 }

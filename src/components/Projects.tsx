@@ -1,7 +1,8 @@
 "use client";
 import { useState } from 'react';
-import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import { FiArrowUpRight } from 'react-icons/fi';
 import Link from 'next/link';
+import ScrollReveal from './ScrollReveal';
 
 export default function Projects() {
   const [filter, setFilter] = useState('All');
@@ -10,35 +11,43 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "SafeStreet Vision",
+      title: "SafeStreet",
       slug: "safestreet-vision",
-      subtitle: "Road Damage & Helmet Detection System",
-      description: "Deteksi AI/ML road damage and helmet detection using YOLOv8 untuk otomasi pengawasan keselamatan jalan raya secara real-time.",
-      tags: ["Python", "YOLOv8", "Ultralytics", "FastAPI"],
+      subtitle: "Road Damage Detection",
+      typeLabel: "COMPUTER VISION",
+      role: "AI/ML Engineer",
+      description: "An end-to-end computer vision system designed to monitor road infrastructure for safety in real-time.",
+      tags: ["Python", "YOLOv8", "FastAPI", "ONNX", "OpenCV", "PyTorch"],
       category: ["AI/ML", "Website"],
     },
     {
       title: "LokalKeren",
       slug: "lokalkeren",
-      subtitle: "Platform Direktori & E-commerce UMKM",
-      description: "Lebih dari sekadar direktori. Ekosistem full-stack untuk menemukan, memesan, dan mengelola UMKM lokal, ditenagai oleh AI.",
-      tags: ["Next.js 14", "Prisma", "PostgreSQL", "Gemini AI"],
+      subtitle: "Platform Direktori & E-commerce",
+      typeLabel: "ECOMMERCE PLATFORM",
+      role: "Full Stack Developer",
+      description: "More than just a directory. A dynamic e-commerce ecosystem for discovering, transacting with, and managing local small businesses (UMKM).",
+      tags: ["React", "Next.js", "Prisma", "PostgreSQL", "Tailwind CSS"],
       category: ["Website"],
     },
     {
-      title: "Peminjaman Ruangan",
+      title: "RoomBook",
       slug: "peminjaman-ruangan",
-      subtitle: "Sistem Peminjaman Ruangan Kampus",
+      subtitle: "Sistem Peminjaman Ruangan",
+      typeLabel: "MANAGEMENT SYSTEM",
+      role: "Backend Developer",
       description: "Aplikasi manajemen ruangan dengan Smart Booking System, integrasi API React & ASP.NET Core, dan mekanisme keamanan data Soft Delete.",
-      tags: ["React", "Vite", "ASP.NET Core", "PostgreSQL", "C#"],
+      tags: ["React", "ASP.NET Core", "PostgreSQL"],
       category: ["Website"],
     },
     {
-      title: "TalentHub Mobile",
+      title: "TalentHub",
       slug: "talenthub-mobile",
-      subtitle: "Cross-Platform Mobile Application for Talent Matching",
-      description: "Aplikasi mobile TalentHub untuk pengalaman pengguna yang lebih dekat, interaktif, dan mulus dalam pencarian serta pengelolaan talenta industri.",
-      tags: ["Flutter", "Dart", "Mobile UI", "Interaction Design"],
+      subtitle: "Mobile Applicant Tracking System",
+      typeLabel: "RECRUITMENT PLATFORM",
+      role: "Mobile Developer",
+      description: "A mobile-first Applicant Tracking System (ATS) that streamlines the hiring process by seamlessly connecting candidate job discovery with comprehensive HR vacancy management.",
+      tags: ["Flutter", "Dart", "REST API"],
       category: ["Mobile"],
     }
   ];
@@ -48,21 +57,26 @@ export default function Projects() {
     : projects.filter(p => p.category.includes(filter));
 
   return (
-    <section id="projects" className="py-24 px-4 bg-silver-solid">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-3">Featured Projects</h2>
-          <p className="text-slate-400 font-medium mb-10">Innovative solutions combining AI, web technologies, and robotics</p>
+    // Background diatur mirip abu-abu dengan motif kertas grid halus (opsional, diwakili warna solid dsini)
+    <section id="projects" className="py-24 px-4 bg-[#f8f9fa] min-h-screen">
+      <div className="w-full">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+            Featured Projects
+          </h2>
+          <p className="text-slate-500 font-medium mb-12">
+            Innovative solutions combining AI, web technologies, and robotics
+          </p>
 
           {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-4">
             {filters.map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-7 py-2 rounded-full text-sm font-semibold transition-all ${filter === f
-                    ? 'bg-slate-900 text-white shadow-md'
-                    : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-400 hover:text-slate-700'
+                className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${filter === f
+                  ? 'bg-slate-900 text-white shadow-md'
+                  : 'bg-white text-slate-500 hover:text-slate-900 shadow-sm'
                   }`}
               >
                 {f}
@@ -71,42 +85,79 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+        {/* Grid Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {filteredProjects.map((project, idx) => (
-            <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/70 hover:shadow-lg transition-all flex flex-col group">
+            <ScrollReveal
+              key={idx}
+              delay={idx * 110}
+              direction="up"
+              distance={26}
+              className="bg-[#edf2f7] rounded-3xl p-8 flex flex-col gap-6 hover:shadow-lg transition-all duration-300 group border border-slate-200/50"
+            >
 
-              {/* Empty dark placeholder for project image */}
-              <div className="w-full h-52 bg-slate-800 relative flex items-end p-4">
-                <span className="text-slate-600 text-xs font-medium">Project Preview</span>
+              {/* Card Header (Number & Type Label) */}
+              <div className="flex justify-between items-start mb-2">
+                <div className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold shadow-sm">
+                  {String(idx + 1).padStart(2, '0')}
+                </div>
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 max-w-[120px] text-right leading-relaxed">
+                  {project.typeLabel}
+                </span>
               </div>
 
-              <div className="p-7 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-slate-700 transition-colors">{project.title}</h3>
-                <p className="text-sm font-medium text-slate-400 mb-3">{project.subtitle}</p>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">{project.description}</p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-7">
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="px-3 py-1 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Buttons */}
-                <div className="flex flex-col gap-3 mt-auto">
-                  <Link href={`/project/${project.slug}`} className="w-full flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors">
-                    <span>View Project</span>
-                    <FiExternalLink size={14} />
-                  </Link>
-                  <button className="w-full flex items-center justify-center space-x-2 bg-white border border-slate-200 hover:border-slate-400 text-slate-600 py-3 rounded-xl text-sm font-semibold transition-colors">
-                    <FiGithub size={14} />
-                    <span>Source Code</span>
-                  </button>
-                </div>
+              {/* Title & Subtitle */}
+              <div>
+                <h3 className="text-4xl font-bold text-slate-900 tracking-tight mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-lg text-slate-600 font-medium">
+                  {project.subtitle}
+                </p>
               </div>
-            </div>
+
+              {/* Role Section */}
+              <div>
+                <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-1">
+                  My Role
+                </p>
+                <p className="text-sm font-semibold text-slate-700">
+                  {project.role}
+                </p>
+              </div>
+
+              {/* Description */}
+              <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                {project.description}
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mt-2">
+                {project.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="px-4 py-1.5 rounded-full border border-slate-300 bg-transparent text-slate-600 text-xs font-semibold"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Footer / Link */}
+              <div className="mt-auto pt-8">
+                <Link
+                  href={`/project/${project.slug}`}
+                  className="inline-flex items-center gap-1.5 text-slate-900 font-bold text-sm group-hover:text-black transition-colors"
+                >
+                  <span className="border-b border-slate-900 pb-0.5">View project</span>
+                  <FiArrowUpRight
+                    size={18}
+                    className="transform transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
+              </div>
+
+            </ScrollReveal>
           ))}
         </div>
       </div>
