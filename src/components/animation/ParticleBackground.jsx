@@ -1,7 +1,10 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
 
-export default function ParticleBackground({ withMask = false }) {
+/**
+ * @param {{ withMask?: boolean | string, maskType?: 'default' | 'hero' | 'experience' | string }} props
+ */
+export default function ParticleBackground({ withMask = false, maskType = 'default' }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -112,15 +115,32 @@ export default function ParticleBackground({ withMask = false }) {
     };
   }, []);
 
+  const getMaskStyle = () => {
+    if (!withMask) return undefined;
+    if (withMask === 'experience' || maskType === 'experience') {
+      return {
+        WebkitMaskImage: 'radial-gradient(ellipse 360px 90px at 50% 140px, transparent 25%, black 85%)',
+        maskImage: 'radial-gradient(ellipse 360px 90px at 50% 140px, transparent 25%, black 85%)'
+      };
+    }
+    if (typeof withMask === 'string' && withMask !== 'true') {
+      return {
+        WebkitMaskImage: withMask,
+        maskImage: withMask
+      };
+    }
+    return {
+      WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 15%, black 70%)',
+      maskImage: 'radial-gradient(ellipse at center, transparent 15%, black 70%)'
+    };
+  };
+
   return (
     <canvas 
       ref={canvasRef} 
       // Tambahkan w-full h-full untuk mencegah distorsi
       className="absolute inset-0 z-0 w-full h-full pointer-events-none"
-      style={withMask ? {
-        WebkitMaskImage: 'radial-gradient(ellipse at center, transparent 15%, black 70%)',
-        maskImage: 'radial-gradient(ellipse at center, transparent 15%, black 70%)'
-      } : undefined}
+      style={getMaskStyle()}
     />
   );
 }

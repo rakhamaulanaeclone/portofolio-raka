@@ -68,12 +68,14 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-24 px-4 overflow-hidden bg-white">
 
-      <ParticleBackground />
+      <ParticleBackground withMask={true} maskType="experience" />
 
       <div className="relative z-10 w-full max-w-[2000px] px-4 md:px-12 mx-auto">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2 sm:mb-3">Professional Experience</h2>
-          <p className="text-slate-400 text-xs sm:text-sm md:text-base font-medium">Building impactful solutions across AI, robotics, and web development</p>
+          <div className="inline-block px-5 py-2.5 rounded-2xl bg-white/40 backdrop-blur-[2px]">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2 sm:mb-3">Professional Experience</h2>
+            <p className="text-slate-400 text-xs sm:text-sm md:text-base font-medium">Building impactful solutions across AI, robotics, and web development</p>
+          </div>
         </div>
 
         <div ref={containerRef} className="relative w-full mx-auto py-6 sm:py-10">

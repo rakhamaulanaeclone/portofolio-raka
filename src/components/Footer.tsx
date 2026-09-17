@@ -31,23 +31,23 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="contact" className="bg-white border-t border-slate-200/60 py-10 px-4">
+    <footer id="contact" className="bg-white border-t border-slate-200/60 py-10 px-4 overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
 
         {/* Deskripsi Teks - Tanpa max-width ketat supaya muat 2 baris pas */}
-        <div className="text-center md:text-left flex-1">
+        <div className="text-center md:text-left flex-1 min-w-0">
           <h3 className="text-base font-semibold text-slate-700 mb-1">Let's Collaborate!</h3>
-          <p className="text-xs text-slate-400 whitespace-nowrap">
+          <p className="text-[clamp(8px,2.2vw,12px)] sm:text-xs text-slate-400 whitespace-nowrap">
             I'm currently open to new opportunities in software development and innovative tech solutions. Whether you're looking for a full-stack developer,
           </p>
-          <p className="text-xs text-slate-400 whitespace-nowrap">
+          <p className="text-[clamp(8px,2.2vw,12px)] sm:text-xs text-slate-400 whitespace-nowrap">
             Mobile Developer & Machine Learning Developer. I'd love to hear from you.
           </p>
         </div>
 
         {/* Teks CONTACT & Ikon Sosial Media */}
         <div className="flex flex-col items-center justify-center gap-2">
-          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider text-center">
+          <span className="text-xs font-semibold text-slate-500 tracking-wider text-center">
             Contact Me
           </span>
           <div className="flex space-x-3">

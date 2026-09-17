@@ -50,16 +50,16 @@ export default function Projects() {
     // Background diatur mirip abu-abu dengan motif kertas grid halus (opsional, diwakili warna solid dsini)
     <section id="projects" className="py-24 px-4 bg-[#f8f9fa] min-h-screen">
       <div className="w-full">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
             Featured Projects
           </h2>
-          <p className="text-slate-500 font-medium mb-12">
+          <p className="text-slate-500 font-medium mb-8 sm:mb-12 text-sm sm:text-base">
             Innovative solutions combining AI, web technologies, and robotics
           </p>
 
           {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {filters.map((f) => (
               <button
                 key={f}
